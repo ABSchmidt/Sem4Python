@@ -35,12 +35,22 @@ def locateCharInPic(x, y, rgb):
 def decryptMessage(encryptedmsg):
     plainString = ''
 
-    listOfLetters = encryptedmsg.split('!')
-    #print(str(listOfLetters))
-    for m in range(0, len(listOfLetters)):
-        seperateVals = listOfLetters[m].split('-')
-        #print(str(seperateVals))
-        plainString += str(locateCharInPic(int(seperateVals[0]),int(seperateVals[1]),int(seperateVals[2])))
+    listOfWords = encryptedmsg.split('*')
+    if(len(listOfWords[len(listOfWords)-1]) < 1):
+        listOfWords.pop(len(listOfWords)-1)
+
+    for o in range(0, len(listOfWords)):
+
+        listOfLetters = listOfWords[o].split('!')
+        if(len(listOfLetters[len(listOfLetters)-1]) < 1):
+            listOfLetters.pop(len(listOfLetters)-1)
+
+        #print(str(listOfLetters))
+        for m in range(0, len(listOfLetters)):
+            seperateVals = listOfLetters[m].split('-')
+            #print(str(seperateVals))
+            plainString += str(locateCharInPic(int(seperateVals[0]),int(seperateVals[1]),int(seperateVals[2])))
+        plainString += ' '
     print(plainString)
 
 
@@ -61,8 +71,8 @@ def encryptMessage(text):
             location = locateValueInPic(ord(listOfLetters[j]))
             listOfLocations += location + "!"
             #print("send me your location: " + str(location))
-
-    listOfLocations = listOfLocations[:-1]
+        listOfLocations += "*"
+    #listOfLocations = listOfLocations[:-3]
     print("listOfLocations: " + listOfLocations)
 
 def main():
