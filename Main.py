@@ -1,4 +1,7 @@
 from PIL import Image
+from FileIO import readFile, writeFile
+import sys
+import time
 
 im = Image.open('Nature01_lake.png')
 image = im.load()
@@ -10,7 +13,6 @@ def locateValueInPic(inputValue):
 
         for x in range(1,100):
             rgbValues = image[x,y]
-            #rgbValues = [rgbValuesTuple]
 
             for i in range(0,3) :
                 singleValue = rgbValues[i]
@@ -65,27 +67,82 @@ def encryptMessage(text):
     for k in range(0, len(listOfWords)):
 
         listOfLetters = (listOfWords[k])
-        print(str(listOfLetters))
         for j in range(0,len(listOfLetters)):
             #location er en string med x-koordinat, y-koordinat og r/g/b-angiver for en char's position i billedfilen
             location = locateValueInPic(ord(listOfLetters[j]))
             listOfLocations += location + "!"
-            #print("send me your location: " + str(location))
         listOfLocations += "*"
-    #listOfLocations = listOfLocations[:-3]
-    print("listOfLocations: " + listOfLocations)
+    return listOfLocations
+    print("Encrypted String: " + listOfLocations)
 
-def main():
-    choice = int(input("Do you wish to\n(1)Encrypt\nor\n(2)Decrypt\nInput: "))
-    if (choice == 1):
-        text = input("Please input your message\n")
-        encryptMessage(text)
-    elif (choice == 2):
-        text = input("Please input your encrypted message\n")
-        decryptMessage(text)
+def encryptOrDecrypt():
+    choice = input("Do you wish to\n(1)Encrypt\nor\n(2)Decrypt\nInput: ")
+
+    # Encryption
+    if (choice == '1'):
+        writeInputOrReadFromFile(True)
+
+    # Decryption
+    elif (choice == '2'):
+      writeInputOrReadFromFile(False)
+
+    elif (choice == 'e' or choice == 'E'):
+        sys.exit()
+
     else:
         print("Invalid input. Please press [1] OR [2] to choose a function:")
-        main()
+        encryptOrDecrypt()
+
+
+def writeInputOrReadFromFile(encrypt):
+    choice = input("Do you wish to\n(1)Write the message\nor\n(2)Read from file\nInput: ")
+
+    # Input message
+    if (choice == '1'):
+        text = input("Please input your message\n")
+        result = encryptMessage(text)
+        print("Your encrypted string: " + result)
+        writeToFile(result)
+
+    # Read file
+    elif (choice == '2'):
+        text = readFile()
+        result = encryptMessage(text)
+        print("Your encrypted string: " + result)
+        writeToFile(result)
+
+    elif (choice == 'e' or choice == 'E'):
+        sys.exit()
+
+    else:
+        print("Invalid input. Please press [1] OR [2] to choose a function:")
+        writeInputOrReadFromFile(encrypt)
+
+
+def writeToFile(result):
+    choice = input("Do you wish to save to a file? (Y/N)")
+    if (choice == 'y' or choice == 'Y'):
+        writeFile(result)
+
+    elif (choice == 'n' or choice == 'N'):
+        sys.exit()
+
+    elif (choice == 'e' or choice == 'E'):
+        sys.exit()
+
+    else:
+        writeToFile()
+
+def main():
+    print("+---------------------------------------+")
+    print("|Welcome to the AM Steganography Service|")
+    print("|Please follow the instructions as they |")
+    print("|appear.                                |")
+    print("|When prompted for input, you can always|")
+    print("|exit the program by pressing [E] ...   |")
+    print("+---------------------------------------+")
+    time.sleep(2)
+    encryptOrDecrypt()
 
 
 if __name__ == '__main__':
