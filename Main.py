@@ -1,10 +1,12 @@
 
-from FileIO import readFile, writeFile
+from FileIO import readFile, writeFile, loadAndSaveImageFromWeb
 from Statistics import addToStats, doStatistics
 import sys
 import time
-from Encrypt import encryptMessage, decryptMessage
+#from Encrypt import encryptMessage, decryptMessage
+from Encrypt import EncryptClass
 
+encryptObject = EncryptClass()
 
 def main():
     print("+---------------------------------------+")
@@ -14,12 +16,12 @@ def main():
     print("|When prompted for input, you can always|")
     print("|exit the program by pressing [E] ...   |")
     print("+---------------------------------------+")
-    time.sleep(2)
+    #time.sleep(1)
     encryptOrDecrypt()
 
 
 def encryptOrDecrypt():
-    choice = input("Do you wish to\n(1)Encrypt\n(2)Decrypt\nor\n(3)Run Statistics\nInput: ")
+    choice = input("Do you wish to\n(1)Encrypt\n(2)Decrypt\n(3)Add image to collection\nor\n(4)Run Statistics\nInput: ")
 
     # Encryption
     if choice == '1':
@@ -40,6 +42,14 @@ def encryptOrDecrypt():
             sys.exit()
 
     elif choice == '3':
+        loadAndSaveImageFromWeb()
+        choice = input("Do you wish to perform further operations? (Y/N): ")
+        if choice == 'y' or choice == 'Y':
+            encryptOrDecrypt()
+        else:
+            sys.exit()
+
+    elif choice == '4':
         doStatistics()
         choice = input("Do you wish to perform further operations? (Y/N): ")
         if choice == 'y' or choice == 'Y':
@@ -63,7 +73,7 @@ def writeInputOrReadFromFile(encrypt):
         if choice == '1':
             text = input("Please input your message\n")
             text = text.lower()
-            result = encryptMessage(text)
+            result = encryptObject.encryptMessage(text)
             print("Your encrypted string: " + result)
             addToStats(text)
             writeToFile(result)
@@ -72,7 +82,7 @@ def writeInputOrReadFromFile(encrypt):
         elif choice == '2':
             text = readFile()
             text = text.lower()
-            result = encryptMessage(text)
+            result = encryptObject.encryptMessage(text)
             print("Your encrypted string: " + result)
             addToStats(text)
             writeToFile(result)
@@ -88,14 +98,14 @@ def writeInputOrReadFromFile(encrypt):
         # Input message
         if choice == '1':
             text = input("Please input your message\n")
-            result = decryptMessage(text)
+            result = encryptObject.decryptMessage(text)
             print("Your decrypted string: ", result)
             writeToFile(result)
 
         # Read file
         elif choice == '2':
             text = readFile()
-            result = decryptMessage(text)
+            result = encryptObject.decryptMessage(text)
             print("Your decrypted string: " + result)
             writeToFile(result)
 
