@@ -22,7 +22,7 @@ def readFile():
     return fromFile
 
 
-#mangler file-chooser
+
 def writeFile(message):
     filename = input("Please input a filename (no extensions): ")
     basePath = os.getcwd()
