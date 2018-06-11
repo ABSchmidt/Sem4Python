@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <title>Hello, World!</title>
+
+        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript">
+
+        eel.expose(say_hello_js);               // Expose this function to Python
+        function say_hello_js(x) {
+            console.log("Hello from " + x);
+        }
+
+        say_hello_js("Javascript World!");
+        eel.say_hello_py("Javascript World!");  // Call a Python function
+
+        </script>
+
+        <style>
+         .container{
+            background-image: url("background4.jpg");
+
+            background-attachment: local;
+            background-size: cover;
+        }
+
+
+        .container-fluid col-sm-4 {
+            position: center;
+            width: 100%;
+            max-width: 1080px;
+            border-radius: 5px;
+            background-color: black;
+            color: #ccc;
+            padding: 20px;
+        }
+
+        .container .col-sm-4 .img {
+            width: 100%;
+            height: auto;
+        }
+
+        .container .row .col-sm-4 .btn {
+            position: center;
+            top: auto;
+            left: auto;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color:black;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            padding: 16px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .container .row .col-sm-4  .btn:hover {
+            background-color: rgb(99, 248, 0);
+            color: rgb(7, 7, 7);
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+
+        .jumbotron {
+            background-color: black;
+            height: 100%;
+            column-fill: auto;
+            text-align: center;
+            color: #cccccc;
+
+        }
+
+        .row{
+            color: aliceblue;
+            column-rule-color: red;
+            column-fill: auto;
+        }
+
+         .container .col-sm-4 {
+                text-align: center;
+            }
+
+        .container .row .col-sm-4 .button {
+            position: center;
+            top: 50%;
+        }
+
+        #encryptBtn{
+            margin-left: 110px;
+        }
+    </style>
+
+    </head>
+
+    <body>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-">
+                    <img src="KEA_logo.jpg" alt="KEA_logo" align=left height="120" width="240">
+                </div>
+
+                <div class="col-9">
+                    <h1>AM ENCRYPTION SERVICES</h1><br>
+                    <h3 class="font-weight-light">EXCLUSIVELY FOR KEA FACULTY</h3>
+                </div>
+
+                <div class="col-">
+                    <button id='log-out' class="btn btn-success" data-toggle="popover" onclick="window.location.href='/logout'"> Log out</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-4">
+                    <h3>WRITE YOUR MESSAGE</h3>
+                    <textarea name="" id="userinput" cols="30" rows="12"></textarea>
+                    <p class="font-weight-light">
+                    STRONG MESSAGING SERVICES FOR THOSE WHO WANT TO HIDE
+                    </p>
+                </div>
+
+
+                <div id ="encryptbutton" class="col-sm-4">
+                    <h3>CHOOSE</h3><br>
+                    <button type="button" class="btn btn-primary"  data-toggle="popover" id="encryptBtn">Encrypt</button>
+
+                    <button type="button" class="btn btn-success" data-toggle="popover" id="decryptBtn">Decrypt</button><br>
+
+                    <h3>
+                    <p></p>
+                    Send your message
+                    <p></p>
+                    </h3><br>
+                    <input type="text" id="emailinput">
+                    <p>
+                    Input and send via email <input type="checkbox" id="checkbox">
+
+                    </p>
+                    <p class="font-weight-light">We use a very high level encryption which makes it susceptitable to hacks from malicious parties</p>
+
+                </div>
+
+
+                <div class="col-sm-4">
+                    <h3>RESULT</h3>
+
+                    <textarea name="" id="serverOut" cols="30" rows="12"></textarea>
+
+
+                    <p class="font-weight-light">THIS TEXTAREA SHOWS THE RESULT</p>
+
+                </div>
+
+                <!--
+                <div class="col-sm-4">
+                    <h3>VIDEO CHAT</h3>
+
+                    <video src="" id="video"></video>
+                    <canvas id="canvas" width="400" height="100" ></canvas><br>
+                    <button onclick="snap();"  class="btn btn-success">play</button>
+
+                    <script type="text/javascript">
+                        var video= document.getElementById('video');
+                        var canvas= document.getElementById('canvas');
+                        var context= canvas.getContext('2d');
+
+                        navigator.getUserMedia = navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.getUserMedia(contraints)||navigator.oGetUserMedia||navigator.msGetUserMedia;
+
+                        if(navigator.getUserMedia){
+                            navigator.getUserMedia({video:true,audio:true}, streamWebCam,throwError);
+                        }
+
+                        function streamWebCam(stream){
+                            video.src = window.URL.createObjectURL(stream);
+                            video.play();
+                        }
+
+                        function throwError(e){
+                            alert(e.name);
+                        }
+
+                        function snap() {
+                            canvas.width= video.clientWidth;
+                            canvas.height= video.clientHeight;
+                            context.drawImage(video,0,0);
+
+                        }
+                    </script>
+
+                </div>
+                -->
+            </div>
+        </div>
+    </body>
+</html>
