@@ -3,11 +3,13 @@ def addToStats(text):
     file.write(text + "\n")
     file.close()
 
+
 def readStrings():
     with open("allStrings.txt") as file:
         lines = file.readlines()
 
     return lines
+
 
 def calcAvgLen(messages):
     numberOfMsgs = len(messages)
@@ -32,6 +34,7 @@ alphabet = {
     'u':0, 'v':0, 'w':0, 'x':0,
     'y':0, 'z':0
 }
+
 
 def calcUsePctOfLetters(messages):
 

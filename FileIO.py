@@ -1,16 +1,17 @@
 import os.path
 
+
 def readFile():
     userinput = input('Enter filepath: ')
 
     fromFile = ''
     eof = False
     file = open(userinput)
-    while(eof == False):
+    while eof == False:
         data = file.readline()
         #data.rstrip('\n')
         fromFile += data
-        if(data == ''):
+        if data == '':
             file.close()
             eof = True
 
