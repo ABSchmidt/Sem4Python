@@ -90,7 +90,6 @@ def writeInputOrReadFromFile(encrypt):
             text = input("Please input your message\n")
             result = decryptMessage(text)
             print("Your decrypted string: ", result)
-            addToStats(text)
             writeToFile(result)
 
         # Read file
