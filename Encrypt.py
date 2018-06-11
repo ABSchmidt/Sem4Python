@@ -7,12 +7,12 @@ image = im.load()
 def locateValueInPic(inputValue):
     found = False
     pixelPos = 0
-    for y in range(1,100):
+    for y in range(1, 100):
 
-        for x in range(1,100):
+        for x in range(1, 100):
             rgbValues = image[x,y]
 
-            for i in range(0,3) :
+            for i in range(0, 3):
                 singleValue = rgbValues[i]
                 if singleValue == inputValue:
                     found = True
@@ -26,7 +26,7 @@ def locateValueInPic(inputValue):
 
 
 def locateCharInPic(x, y, rgb):
-    aPixel = image[x,y]
+    aPixel = image[x, y]
     charVal = aPixel[rgb]
     return chr(charVal)
 
