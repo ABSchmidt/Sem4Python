@@ -25,7 +25,7 @@ def readFile():
 #mangler file-chooser
 def writeFile(message):
     filename = input("Please input a filename (no extensions): ")
-    basePath = "C:/Users/admin/Documents/"
+    basePath = os.getcwd()
     completePath = os.path.join(basePath, filename + ".txt")
     file = open(completePath, "w")
     file.write(message)
