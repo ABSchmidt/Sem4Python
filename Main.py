@@ -2,8 +2,6 @@
 from FileIO import readFile, writeFile, loadAndSaveImageFromWeb
 from Statistics import addToStats, doStatistics
 import sys
-import time
-#from Encrypt import encryptMessage, decryptMessage
 from Encrypt import EncryptClass
 
 encryptObject = EncryptClass()

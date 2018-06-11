@@ -17,7 +17,7 @@ class EncryptClass:
 
     def loadImage(self):
         global listOfImages
-        imgChoice = int(input("Please choose a picture by inputting a number between %d and %d: " % (1,len(listOfImages))))
+        imgChoice = int(input("Please choose a picture by inputting a number between %d and %d: " % (1, len(listOfImages))))
         global im
         im = Image.open(listOfImages[imgChoice-1])
         global image

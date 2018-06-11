@@ -2,3 +2,4 @@ Nature01_lake.png
 waterfalls.png
 colorful_houses.png
 gears.png
+24.png
