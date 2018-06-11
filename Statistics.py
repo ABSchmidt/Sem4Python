@@ -13,16 +13,14 @@ def readStrings():
 
 def calcAvgLen(messages):
     numberOfMsgs = len(messages)
-    print("number of msgs: " + str(numberOfMsgs))
+    print("Number of messages " + str(numberOfMsgs))
     totalMsgLen = 0
 
     for j in range (0, numberOfMsgs):
-        oneMsg = messages[j]
-        oneMsg = oneMsg.strip(' \t\n\r')
-        print("length of msg: " + str(len(oneMsg)))
-        totalMsgLen += len(messages[j])
+       totalMsgLen += len(messages[j])
 
-    return totalMsgLen/numberOfMsgs
+    avglenofmessages= totalMsgLen/numberOfMsgs
+    print("Average length of a message is :", round(avglenofmessages, 2))
 
 
 alphabet = {
@@ -59,10 +57,10 @@ def calcUsePctOfLetters(messages):
     #Calculate percentages
     for letter in alphabet:
         percentage = alphabet[letter]/totalCount*100
-        print("Percentage of " + letter + ": " + str(percentage))
+        print(str(round(percentage, 2))+"% of "+letter)
 
 
 def doStatistics():
     messages = readStrings()
-    #avgLenOfMsg = calcAvgLen(messages)
     calcUsePctOfLetters(messages)
+    avgLenOfMsg = calcAvgLen(messages)

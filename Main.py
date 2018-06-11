@@ -6,6 +6,18 @@ import time
 from Encrypt import encryptMessage, decryptMessage
 
 
+def main():
+    print("+---------------------------------------+")
+    print("|Welcome to the AM Steganography Service|")
+    print("|Please follow the instructions as they |")
+    print("|appear.                                |")
+    print("|When prompted for input, you can always|")
+    print("|exit the program by pressing [E] ...   |")
+    print("+---------------------------------------+")
+    time.sleep(2)
+    encryptOrDecrypt()
+
+
 def encryptOrDecrypt():
     choice = input("Do you wish to\n(1)Encrypt\n(2)Decrypt\nor\n(3)Run Statistics\nInput: ")
 
@@ -111,16 +123,6 @@ def writeToFile(result):
         writeToFile()
 
 
-def main():
-    print("+---------------------------------------+")
-    print("|Welcome to the AM Steganography Service|")
-    print("|Please follow the instructions as they |")
-    print("|appear.                                |")
-    print("|When prompted for input, you can always|")
-    print("|exit the program by pressing [E] ...   |")
-    print("+---------------------------------------+")
-    time.sleep(2)
-    encryptOrDecrypt()
 
 
 if __name__ == '__main__':
