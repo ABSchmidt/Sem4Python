@@ -63,4 +63,4 @@ def calcUsePctOfLetters(messages):
 def doStatistics():
     messages = readStrings()
     calcUsePctOfLetters(messages)
-    avgLenOfMsg = calcAvgLen(messages)
+    calcAvgLen(messages)
