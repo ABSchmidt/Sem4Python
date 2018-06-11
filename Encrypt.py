@@ -13,7 +13,6 @@ class EncryptClass:
 
         for x in range(0,len(listOfImages)):
             listOfImages[x] = listOfImages[x].rstrip()
-        print(listOfImages)
 
 
     def loadImage(self):
