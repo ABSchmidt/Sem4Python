@@ -12,14 +12,14 @@ def readStrings():
 
 
 def calcAvgLen(messages):
-    numberOfMsgs = len(messages)
-    print("Number of messages " + str(numberOfMsgs))
+    numberOfMessages = len(messages)
+    print("Number of messages " + str(numberOfMessages))
     totalMsgLen = 0
 
-    for j in range (0, numberOfMsgs):
+    for j in range (0, numberOfMessages):
        totalMsgLen += len(messages[j])
 
-    avglenofmessages= totalMsgLen/numberOfMsgs
+    avglenofmessages= totalMsgLen/numberOfMessages
     print("Average length of a message is :", round(avglenofmessages, 2))
 
 
